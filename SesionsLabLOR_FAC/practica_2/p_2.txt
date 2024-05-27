@@ -1,0 +1,12 @@
+Exercise 3:
+
+How to modify the permissions of the test file to have only write permision for the owner, its group and the rest of users:
+	- Use the command #chmod to modify the permisions of the file
+	- Using "#chmod ugo-rx file", you will remove reading(r) and execution(x) permission for the owner(o), group(g) and rest of users(u) of the file named file.
+	- Use "#chmod ugo+w file" to activate the writing(w) permission for the owner, group and rest of user for the file named file.
+	You could also check first which permissions are already active using the command "#ls -l" and then only activating/removing the necessary permissions.
+
+What happends when you try yo do a cat?
+	Since reading permission has been removed for user, when using the command cat, the following text will pop up:
+		cat: file: Permission denied
+	where "file" is the name of the file.

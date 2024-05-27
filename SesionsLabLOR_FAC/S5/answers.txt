@@ -1,0 +1,138 @@
+EXERCISE 1
+
+Which command would you use to “list” the program source?
+    the command: list
+How do you know the exact line where the execution has stopped?
+    By using the command $list, the current line is marked with a "->"
+
+EXERCISE 2
+Which command do you use to “display” or “print” their values?
+    The command $display tto display and the command $print to print, followed by the name of the variable the value of which we want to check.
+
+What is the value of “sys.argv”?
+    ['./fib.py', '4']
+
+What happens with the value of “argc” if the line shown has not be executed yet?
+    It shows the following error:
+        display argc: ** raised NameError: name 'argc' is not defined **
+
+EXERCISE 3
+What is the new value of “argc”?
+    2
+Has it been displayed automatically? Why?
+    Yes, because previously we used the command $display and it raised an error since argc wasn't defined, so the debugging was waiting for a value to be asigned to display it.
+
+
+EXERCISE 4
+Why can’t you see the value of “num”?
+    Because we're not in the main program anymore, we're in the fibonacci function, where "num" is not defined, so it doesn't have a value.
+What can you do to access that variables?
+    Using the command 'up' we can go back to the main function where 'num' has an assigned value, and there we can check it.
+Explain how you access the value of “num”.
+    Once in the main function, we use the command $display num.
+
+
+EXERCISE 5
+Which command do you use to determine the recursion level?
+    We use the commnd $where, which shows the position on the stack trace, so you can see how many times you've entered the function and so, the recursion level-
+How many levels “up” do you need to go to reach the main function, and be able to display the variable “num” again?
+    3
+Go “up” the number of levels needed to reach the main function, and display the variable “num”
+    4
+
+
+EXERCISE 6
+When changing the value of argc to 1, the execution of the program continues with this value, overwriting the value argc would normally have. In this case, this makes the program goes through the 'if' branch instead of the 'else' one.
+
+
+EXERCISE 7
+How do you set the breakpoint in the line "num = strtol(argv[1], NULL, 0);"?
+    break 18
+
+How do you set the breakpoint in the function "fibonacci"?
+    break 19
+
+
+EXERCISE 8
+After using the $break <line_number> command to stablish the breakpoints, we used the commands:
+    run 6
+    next
+    print num
+
+
+EXERCISE 9
+You need as many "finish" invocation as the value you've ran the function with.
+
+
+EXERCISE 10
+How do you display the value of the parameter “n”?
+    Using the command $print n
+
+How do you go “up” to the next stack frames?
+    Using the command $up
+
+What are the values of the argument “n” in the various stack frames?
+    The same as the recursion level (10, 9, 8, ...)
+
+How do you delete the breakpoint?
+    Using the command $delete <break_number>
+
+How do you let the program “continue” to the end?
+    Using the command $cont
+
+Is the result still correct?
+    Yes
+
+
+EXERCISE 11
+What is the difference between the commands "print" and "display"?
+    "print" shows the value you asked about while display not only shows it but also markes it as a value of interest so it shows it every time the program stops.
+
+
+EXERCISE 12
+How do you change the value of the “argc” variable ?
+    Using the command $set argc = 1
+
+Explain in your “answers.txt” file what is the consequence on the execution of the program when you “continue” it, of having modified the “argc” variable.
+    Instead of going through the 'if' branch, it goes through the 'else' one. Therefore, it nds up showing:
+        Us: /dades/S5/fib <number>
+        where <number> is the number from which to compute fibonacci(number).
+    which is an usage help
+
+
+EXERCISE 14
+    practica_5/S5> /usr/bin/time ./fib0 42
+    fibonacci(42) = 267914296
+    1.70user 0.00system 0:01.70elapsed 99%CPU (0avgtext+0avgdata 1500maxresident)k
+    0inputs+0outputs (0major+75minor)pagefaults 0swaps
+    practica_5/S5> /usr/bin/time ./fib1 42
+    fibonacci(42) = 267914296
+    1.48user 0.00system 0:01.49elapsed 99%CPU (0avgtext+0avgdata 1476maxresident)k
+    0inputs+0outputs (0major+74minor)pagefaults 0swaps
+    practica_5/S5> /usr/bin/time ./fib2 42
+    fibonacci(42) = 267914296
+    0.79user 0.00system 0:00.79elapsed 99%CPU (0avgtext+0avgdata 1480maxresident)k
+    0inputs+0outputs (0major+74minor)pagefaults 0swaps
+    practica_5/S5> /usr/bin/time ./fib3 42
+    fibonacci(42) = 267914296
+    0.56user 0.00system 0:00.56elapsed 99%CPU (0avgtext+0avgdata 1576maxresident)k
+    0inputs+0outputs (0major+76minor)pagefaults 0swaps
+
+EXERCISE 15
+
+    fib00:
+    ==7186== I   refs:      50,393,763
+
+    fib01:
+    ==7187== I   refs:      39,305,787
+
+    fib02:
+    ==7188== I   refs:      34,874,167
+
+    fib03:
+    ==7189== I   refs:      22,133,782
+
+    fib.py:
+    ==7200== I   refs:      2,898,193,085
+
+

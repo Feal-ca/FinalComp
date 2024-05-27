@@ -1,0 +1,489 @@
+EXERCISE 1
+    #ps
+    PID TTY          TIME CMD
+ 4530 pts/0    00:00:00 tcsh
+ 4572 pts/0    00:00:03 kate
+ 4582 pts/0    00:00:00 clangd.main
+ 5705 pts/0    00:00:00 ps
+
+    #ps -a
+    ID TTY          TIME CMD
+ 4572 pts/0    00:00:04 kate
+ 4582 pts/0    00:00:00 clangd.main
+ 5712 pts/0    00:00:00 ps
+
+    #ps u
+ USER      PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+laia.ol+  4530  0.0  0.0  17484  5236 pts/0    Ss   10:08   0:00 -csh
+laia.ol+  4572  0.5  0.8 704864 145448 pts/0   Sl   10:09   0:05 kate writebin.c
+laia.ol+  4582  0.0  0.6 671412 103184 pts/0   Sl   10:09   0:00 /usr/bin/clangd -log=error --background-index --limi
+laia.ol+  5792  0.0  0.0  25808  4148 pts/0    R+   10:25   0:00 ps u
+
+    #ps - e
+     PID TTY       TIME CMD
+    1 ?        00:00:05 systemd
+    2 ?        00:00:00 kthreadd
+    3 ?        00:00:00 rcu_gp
+    4 ?        00:00:00 rcu_par_gp
+    6 ?        00:00:00 kworker/0:0H-events_highpri
+    9 ?        00:00:00 mm_percpu_wq
+   10 ?        00:00:00 rcu_tasks_kthre
+   11 ?        00:00:00 rcu_tasks_rude_
+   12 ?        00:00:00 rcu_tasks_trace
+   13 ?        00:00:00 ksoftirqd/0
+   14 ?        00:00:00 rcu_preempt
+   15 ?        00:00:00 migration/0
+   16 ?        00:00:00 idle_inject/0
+   17 ?        00:00:00 cpuhp/0
+   18 ?        00:00:00 cpuhp/1
+   19 ?        00:00:00 idle_inject/1
+   20 ?        00:00:00 migration/1
+   21 ?        00:00:00 ksoftirqd/1
+   23 ?        00:00:00 kworker/1:0H-events_highpri
+   24 ?        00:00:00 cpuhp/2
+   25 ?        00:00:00 idle_inject/2
+   26 ?        00:00:00 migration/2
+   27 ?        00:00:00 ksoftirqd/2
+   29 ?        00:00:00 kworker/2:0H-events_highpri
+   30 ?        00:00:00 cpuhp/3
+   31 ?        00:00:00 idle_inject/3
+   32 ?        00:00:00 migration/3
+   33 ?        00:00:00 ksoftirqd/3
+   35 ?        00:00:00 kworker/3:0H-events_highpri
+   36 ?        00:00:00 cpuhp/4
+   37 ?        00:00:00 idle_inject/4
+   38 ?        00:00:00 migration/4
+   39 ?        00:00:00 ksoftirqd/4
+   41 ?        00:00:00 kworker/4:0H-events_highpri
+   42 ?        00:00:00 cpuhp/5
+   43 ?        00:00:00 idle_inject/5
+   44 ?        00:00:00 migration/5
+   45 ?        00:00:00 ksoftirqd/5
+   47 ?        00:00:00 kworker/5:0H-events_highpri
+   48 ?        00:00:00 cpuhp/6
+   49 ?        00:00:00 idle_inject/6
+   50 ?        00:00:00 migration/6
+   51 ?        00:00:00 ksoftirqd/6
+   53 ?        00:00:00 kworker/6:0H-events_highpri
+   54 ?        00:00:00 cpuhp/7
+   55 ?        00:00:00 idle_inject/7
+   56 ?        00:00:00 migration/7
+   57 ?        00:00:00 ksoftirqd/7
+   59 ?        00:00:00 kworker/7:0H-events_highpri
+   62 ?        00:00:00 kworker/u16:2-events_unbound
+   68 ?        00:00:00 kdevtmpfs
+   69 ?        00:00:00 netns
+   70 ?        00:00:00 inet_frag_wq
+   71 ?        00:00:00 kauditd
+   72 ?        00:00:00 khungtaskd
+   73 ?        00:00:00 oom_reaper
+   74 ?        00:00:00 writeback
+   75 ?        00:00:00 kcompactd0
+   76 ?        00:00:00 ksmd
+   77 ?        00:00:00 khugepaged
+   79 ?        00:00:00 kworker/3:1-events
+  104 ?        00:00:00 kintegrityd
+  105 ?        00:00:00 kblockd
+  106 ?        00:00:00 blkcg_punt_bio
+  107 ?        00:00:00 kworker/1:1-events
+  108 ?        00:00:00 tpm_dev_wq
+  109 ?        00:00:00 edac-poller
+  110 ?        00:00:00 devfreq_wq
+  139 ?        00:00:00 kworker/4:1-mm_percpu_wq
+  140 ?        00:00:00 watchdogd
+  142 ?        00:00:00 kworker/2:1H-kblockd
+  144 ?        00:00:00 kworker/5:1-mm_percpu_wq
+  145 ?        00:00:00 kswapd0
+  147 ?        00:00:00 kthrotld
+  148 ?        00:00:00 irq/122-aerdrv
+  151 ?        00:00:00 mld
+  152 ?        00:00:00 ipv6_addrconf
+  153 ?        00:00:00 kworker/1:1H-kblockd
+  158 ?        00:00:00 kstrp
+  159 ?        00:00:00 zswap-shrink
+  160 ?        00:00:00 kworker/u17:0-xprtiod
+  165 ?        00:00:00 charger_manager
+  167 ?        00:00:00 kworker/0:1H-kblockd
+  210 ?        00:00:00 kaluad
+  212 ?        00:00:00 kmpath_rdacd
+  213 ?        00:00:00 kmpathd
+  214 ?        00:00:00 kmpath_handlerd
+  216 ?        00:00:00 kworker/5:1H-kblockd
+  327 ?        00:00:00 kworker/6:1H-kblockd
+  334 ?        00:00:00 kworker/7:1H-kblockd
+  363 ?        00:00:00 cryptd
+  365 ?        00:00:00 ata_sff
+  368 ?        00:00:00 kworker/0:2-events
+  421 ?        00:00:00 nvme-wq
+  422 ?        00:00:00 nvme-reset-wq
+  423 ?        00:00:00 nvme-delete-wq
+  424 ?        00:00:00 nvme-auth-wq
+  441 ?        00:00:00 scsi_eh_0
+  442 ?        00:00:00 scsi_tmf_0
+  443 ?        00:00:00 scsi_eh_1
+  444 ?        00:00:00 scsi_tmf_1
+  445 ?        00:00:00 scsi_eh_2
+  446 ?        00:00:00 scsi_tmf_2
+  447 ?        00:00:00 scsi_eh_3
+  448 ?        00:00:00 scsi_tmf_3
+  449 ?        00:00:00 scsi_eh_4
+  450 ?        00:00:00 scsi_tmf_4
+  456 ?        00:00:00 kworker/4:1H-kblockd
+  462 ?        00:00:00 kworker/3:1H-kblockd
+  468 ?        00:00:00 jbd2/nvme0n1p7-
+  469 ?        00:00:00 ext4-rsv-conver
+  507 ?        00:00:00 kworker/7:2-mm_percpu_wq
+  509 ?        00:00:00 haveged
+  587 ?        00:00:00 dmeventd
+  594 ?        00:00:00 systemd-journal
+  609 ?        00:00:00 kworker/6:2-events_freezable
+  610 ?        00:00:00 systemd-udevd
+  767 ?        00:00:00 rpciod
+  768 ?        00:00:00 xprtiod
+  770 ?        00:00:00 auditd
+  778 ?        00:00:00 acpid
+  781 ?        00:00:00 avahi-daemon
+  790 ?        00:00:01 dbus-daemon
+  808 ?        00:00:00 irqbalance
+  946 ?        00:00:00 polkitd
+  971 ?        00:00:00 smartd
+ 1028 ?        00:00:00 wickedd-auto4
+ 1031 ?        00:00:00 wickedd-dhcp4
+ 1034 ?        00:00:00 wickedd-dhcp6
+ 1056 ?        00:00:00 mcelog
+ 1060 ?        00:00:00 wickedd
+ 1067 ?        00:00:00 ModemManager
+ 1083 ?        00:00:00 wickedd-nanny
+ 1170 ?        00:00:00 iprt-VBoxWQueue
+ 1171 ?        00:00:00 iprt-VBoxTscThr
+ 1642 ?        00:00:00 ntpd
+ 1644 ?        00:00:00 ntpd
+ 1665 ?        00:00:00 vncmanager
+ 1666 ?        00:00:00 xrdp-sesman
+ 1667 ?        00:00:00 xrdp
+ 1690 ?        00:00:00 rpcbind
+ 1694 ?        00:00:00 rpc.statd
+ 1793 ?        00:00:00 master
+ 1794 ?        00:00:00 pickup
+ 1795 ?        00:00:00 qmgr
+ 1798 ?        00:00:00 cupsd
+ 1804 ?        00:00:00 systemd-logind
+ 1814 ?        00:00:00 colord
+ 1815 ?        00:00:00 nfsiod
+ 1818 ?        00:00:00 kworker/u17:1-xprtiod
+ 1828 ?        00:00:00 lockd
+ 1953 ?        00:00:00 cron
+ 2027 ?        00:00:00 rsyslogd
+ 2049 tty1     00:00:00 agetty
+ 2050 ?        00:00:00 sddm
+ 2119 ?        00:00:00 uas
+ 2149 ?        00:00:00 bpfilter_umh
+ 2328 ?        00:00:00 nv_queue
+ 2329 ?        00:00:00 nv_queue
+ 2507 ?        00:00:00 UVM global queu
+ 2508 ?        00:00:00 UVM deferred re
+ 2509 ?        00:00:00 UVM Tools Event
+ 2629 ?        00:00:00 nvidia-modeset/
+ 2630 ?        00:00:00 nvidia-modeset/
+ 2633 ?        00:00:16 irq/136-nvidia
+ 2634 ?        00:00:00 nvidia
+ 2635 ?        00:00:00 nv_queue
+ 2742 ?        00:00:00 card0-crtc0
+ 2743 ?        00:00:00 card0-crtc1
+ 2744 ?        00:00:00 card0-crtc2
+ 2745 ?        00:00:00 card0-crtc3
+ 2750 ?        00:00:00 sssd
+ 2751 ?        00:00:00 sssd_be
+ 2752 ?        00:00:00 sssd_nss
+ 2753 ?        00:00:00 sssd_pam
+ 2894 ?        00:00:00 epmd
+ 2915 ?        00:00:00 sshd
+ 3183 tty7     00:00:33 X
+ 3231 ?        00:00:00 udisksd
+ 3255 ?        00:00:00 upowerd
+ 3280 ?        00:00:00 sddm-helper
+ 3284 ?        00:00:00 systemd
+ 3303 ?        00:00:00 cifsiod
+ 3304 ?        00:00:00 smb3decryptd
+ 3305 ?        00:00:00 cifsfileinfoput
+ 3306 ?        00:00:00 cifsoplockd
+ 3307 ?        00:00:00 deferredclose
+ 3308 ?        00:00:00 cifs-dfscache
+ 3321 ?        00:00:00 (sd-pam)
+ 3329 ?        00:00:00 gnome-keyring-d
+ 3342 ?        00:00:00 cifsd
+ 3345 ?        00:00:00 startplasma-x11
+ 3355 ?        00:00:00 dbus-daemon
+ 3477 ?        00:00:00 ssh-agent
+ 3502 ?        00:00:00 baloo_file
+ 3506 ?        00:00:00 xdg-desktop-por
+ 3511 ?        00:00:00 xdg-document-po
+ 3515 ?        00:00:00 xdg-permission-
+ 3521 ?        00:00:00 fusermount3
+ 3524 ?        00:00:00 xdg-desktop-por
+ 3531 ?        00:00:01 kded5
+ 3532 ?        00:00:00 ksmserver
+ 3533 ?        00:00:35 kwin_x11
+ 3538 ?        00:00:00 gvfsd
+ 3543 ?        00:00:00 gvfsd-fuse
+ 3552 ?        00:00:00 at-spi-bus-laun
+ 3558 ?        00:00:00 dbus-daemon
+ 3561 ?        00:00:00 at-spi2-registr
+ 3573 ?        00:00:00 rtkit-daemon
+ 3576 ?        00:00:00 kglobalaccel5
+ 3583 ?        00:00:23 plasmashell
+ 3588 ?        00:00:00 dconf-service
+ 3601 ?        00:00:00 kactivitymanage
+ 3605 ?        00:00:00 gmenudbusmenupr
+ 3606 ?        00:00:00 polkit-kde-auth
+ 3607 ?        00:00:00 org_kde_powerde
+ 3608 ?        00:00:00 xdg-desktop-por
+ 3609 ?        00:00:00 xembedsniproxy
+ 3664 ?        00:00:00 pipewire
+ 3665 ?        00:00:00 wireplumber
+ 3683 ?        00:00:00 gnome-keyring-d
+ 3696 ?        00:00:00 power-profiles-
+ 3737 ?        00:00:03 ibus-daemon
+ 3757 ?        00:00:00 kdeconnectd
+ 3759 ?        00:00:00 oyranos-monitor
+ 3767 ?        00:00:00 oyranos-monitor
+ 3782 ?        00:00:00 agent
+ 3789 ?        00:00:00 kaccess
+ 3798 ?        00:00:00 kalendarac
+ 3810 ?        00:00:00 gvfs-udisks2-vo
+ 3811 ?        00:00:00 kscreen_backend
+ 3814 ?        00:00:00 ibus-dconf
+ 3815 ?        00:00:00 ibus-ui-gtk3
+ 3820 ?        00:00:01 ibus-extension-
+ 3826 ?        00:00:00 ibus-x11
+ 3830 ?        00:00:00 ibus-portal
+ 3835 ?        00:00:00 gvfs-afc-volume
+ 3843 ?        00:00:00 gvfs-mtp-volume
+ 3850 ?        00:00:00 gvfs-gphoto2-vo
+ 3860 ?        00:00:00 gvfs-goa-volume
+ 3864 ?        00:00:00 goa-daemon
+ 3885 ?        00:00:00 goa-identity-se
+ 3917 ?        00:00:00 ibus-engine-sim
+ 3941 ?        00:00:00 xfce4-notifyd
+ 3961 ?        00:00:00 pulseaudio
+ 3965 ?        00:00:00 gsettings-helpe
+ 3980 ?        00:00:00 xsettingsd
+ 4083 ?        00:02:13 firefox
+ 4161 ?        00:00:04 kmozillahelper
+ 4167 ?        00:00:00 Socket Process
+ 4190 ?        00:00:01 WebExtensions
+ 4204 ?        00:00:22 Isolated Web Co
+ 4333 ?        00:00:02 Privileged Cont
+ 4410 ?        00:00:07 Isolated Web Co
+ 4527 ?        00:00:03 lxterminal
+ 4530 pts/0    00:00:00 tcsh
+ 4572 pts/0    00:00:06 kate
+ 4582 pts/0    00:00:00 clangd.main
+ 4906 ?        00:00:09 Isolated Web Co
+ 4923 ?        00:00:00 kworker/6:0-events
+ 5040 ?        00:00:00 kworker/u16:0-events_unbound
+ 5114 ?        00:00:00 kworker/3:0-events
+ 5115 ?        00:00:00 kworker/5:0-events
+ 5116 ?        00:00:00 kworker/2:0-cgroup_destroy
+ 5133 ?        00:00:00 kworker/0:0-events
+ 5180 ?        00:00:00 kworker/7:0-events
+ 5290 ?        00:00:00 kworker/1:0-events_power_efficient
+ 5363 ?        00:00:00 RDD Process
+ 5365 ?        00:00:00 Utility Process
+ 5377 ?        00:00:00 kworker/4:0-events
+ 5426 ?        00:00:00 Web Content
+ 5475 ?        00:00:00 Web Content
+ 5501 ?        00:00:00 Web Content
+ 5700 ?        00:00:00 kworker/2:2-mm_percpu_wq
+ 5781 ?        00:00:00 kworker/4:2
+ 5797 pts/0    00:00:00 ps
+
+    #ps -f
+    UID     PID  PPID  C STIME TTY          TIME CMD
+laia.ol+  4530  4527  0 10:08 pts/0    00:00:00 -csh
+laia.ol+  4572  4530  0 10:09 pts/0    00:00:08 kate writebin.c
+laia.ol+  4582  4572  0 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit results=500 --c
+laia.ol+  5804  4530 99 10:27 pts/0    00:00:00 ps -f
+
+
+
+    #ps -fL
+   UID     PID  PPID   LWP  C NLWP STIME TTY          TIME CMD
+laia.ol+  4530  4527  4530  0    1 10:08 pts/0    00:00:00 -csh
+laia.ol+  4572  4530  4572  0    5 10:09 pts/0    00:00:08 kate writebin.c
+laia.ol+  4572  4530  4573  0    5 10:09 pts/0    00:00:00 kate writebin.c
+laia.ol+  4572  4530  4574  0    5 10:09 pts/0    00:00:00 kate writebin.c
+laia.ol+  4572  4530  4576  0    5 10:09 pts/0    00:00:00 kate writebin.c
+laia.ol+  4572  4530  5802  0    5 10:27 pts/0    00:00:00 kate writebin.c
+laia.ol+  4582  4572  4582  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4583  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4584  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4585  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4586  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4587  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4588  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  4582  4572  4589  0    8 10:09 pts/0    00:00:00 /usr/bin/clangd -log=error --background-index --limit-resu
+laia.ol+  5806  4530  5806  0    1 10:27 pts/0    00:00:00 ps -fL
+
+   "CMD" shows the commands that are being executed, with its arguments as a string.
+    The column "UID" gives the user ID.
+    The column "PID" gives the Process ID.
+    The columns "PPID" gives the Parent Process ID.
+    The column "C" shows the process utilization. The integer value of the percentage usage over the lifetime of the process.
+    "NLWP" is the number of lwps(threads) in the process. (alias thcount).
+      The column "LWP" gives the lightweight process (thread) ID of the dispatchable entity (alias spid, tid, to see more with man, see tid).
+    The column "STIME" gives the start time, the starting time or date of the process.
+    "Time" shows the cumulative CPU time.
+    "TTY" is the controlling tty (alias tname)
+
+EXERCISE 2
+Using the command "pstree" the processes shown are:
+
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─acpid
+        ├─agetty
+        ├─auditd───{auditd}
+        ├─avahi-daemon
+        ├─colord───2*[{colord}]
+        ├─cron
+        ├─cupsd
+        ├─dbus-daemon
+        ├─dmeventd
+        ├─epmd
+        ├─gnome-keyring-d───3*[{gnome-keyring-d}]
+        ├─haveged
+        ├─irqbalance───{irqbalance}
+        ├─master─┬─pickup
+        │        └─qmgr
+        ├─mcelog
+        ├─ntpd───ntpd
+        ├─polkitd───2*[{polkitd}]
+        ├─power-profiles-───2*[{power-profiles-}]
+        ├─rpc.statd
+        ├─rpcbind
+        ├─rsyslogd───4*[{rsyslogd}]
+        ├─rtkit-daemon───2*[{rtkit-daemon}]
+        ├─sddm─┬─X───{X}
+        │      ├─sddm-helper───startplasma-x11─┬─ssh-agent
+        │      │                               └─{startplasma-x11}
+        │      └─{sddm}
+        ├─smartd
+        ├─sshd
+        ├─sssd─┬─sssd_be
+        │      ├─sssd_nss
+        │      └─sssd_pam
+        ├─systemd─┬─(sd-pam)
+        │         ├─agent───2*[{agent}]
+        │         ├─at-spi-bus-laun─┬─dbus-daemon
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─baloo_file───2*[{baloo_file}]
+        │         ├─dbus-daemon
+        │         ├─dconf-service───2*[{dconf-service}]
+        │         ├─gmenudbusmenupr───2*[{gmenudbusmenupr}]
+        │         ├─gnome-keyring-d───2*[{gnome-keyring-d}]
+        │         ├─goa-daemon───3*[{goa-daemon}]
+        │         ├─goa-identity-se───3*[{goa-identity-se}]
+        │         ├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+        │         ├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+        │         ├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+        │         ├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+        │         ├─gvfs-udisks2-vo───3*[{gvfs-udisks2-vo}]
+        │         ├─gvfsd───2*[{gvfsd}]
+        │         ├─gvfsd-fuse───6*[{gvfsd-fuse}]
+        │         ├─ibus-daemon─┬─ibus-dconf───3*[{ibus-dconf}]
+        │         │             ├─ibus-engine-sim───2*[{ibus-engine-sim}]
+        │         │             ├─ibus-extension-───3*[{ibus-extension-}]
+        │         │             ├─ibus-ui-gtk3───3*[{ibus-ui-gtk3}]
+        │         │             └─2*[{ibus-daemon}]
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─ibus-x11───2*[{ibus-x11}]
+        │         ├─kaccess───2*[{kaccess}]
+        │         ├─kactivitymanage───5*[{kactivitymanage}]
+        │         ├─kalendarac───2*[{kalendarac}]
+        │         ├─kdeconnectd───3*[{kdeconnectd}]
+        │         ├─kded5───8*[{kded5}]
+        │         ├─kglobalaccel5───2*[{kglobalaccel5}]
+        │         ├─kscreen_backend───2*[{kscreen_backend}]
+        │         ├─ksmserver───2*[{ksmserver}]
+        │         ├─kwin_x11───6*[{kwin_x11}]
+        │         ├─org_kde_powerde───5*[{org_kde_powerde}]
+        │         ├─oyranos-monitor───oyranos-monitor
+        │         ├─pipewire───{pipewire}
+        │         ├─plasmashell─┬─firefox─┬─Isolated Web Co───27*[{Isolated Web Co}]
+        │         │             │         ├─Privileged Cont───25*[{Privileged Cont}]
+        │         │             │         ├─RDD Process───3*[{RDD Process}]
+        │         │             │         ├─Socket Process───4*[{Socket Process}]
+        │         │             │         ├─Web Content───10*[{Web Content}]
+        │         │             │         ├─2*[Web Content───11*[{Web Content}]]
+        │         │             │         ├─WebExtensions───25*[{WebExtensions}]
+        │         │             │         ├─kmozillahelper───2*[{kmozillahelper}]
+        │         │             │         └─97*[{firefox}]
+        │         │             ├─lxterminal─┬─tcsh─┬─kate───4*[{kate}]
+        │         │             │            │      └─pstree
+        │         │             │            └─3*[{lxterminal}]
+        │         │             └─14*[{plasmashell}]
+        │         ├─polkit-kde-auth───4*[{polkit-kde-auth}]
+        │         ├─pulseaudio─┬─gsettings-helpe───3*[{gsettings-helpe}]
+        │         │            └─3*[{pulseaudio}]
+        │         ├─wireplumber───3*[{wireplumber}]
+        │         ├─xdg-desktop-por───5*[{xdg-desktop-por}]
+        │         ├─xdg-desktop-por───3*[{xdg-desktop-por}]
+        │         ├─xdg-desktop-por───2*[{xdg-desktop-por}]
+        │         ├─xdg-document-po─┬─fusermount3
+        │         │                 └─5*[{xdg-document-po}]
+        │         ├─xdg-permission-───2*[{xdg-permission-}]
+        │         ├─xembedsniproxy───2*[{xembedsniproxy}]
+        │         ├─xfce4-notifyd───2*[{xfce4-notifyd}]
+        │         └─xsettingsd
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-udevd
+        ├─udisksd───4*[{udisksd}]
+        ├─upowerd───2*[{upowerd}]
+        ├─vncmanager
+        ├─wickedd
+        ├─wickedd-auto4
+        ├─wickedd-dhcp4
+        ├─wickedd-dhcp6
+        ├─wickedd-nanny
+        ├─xrdp
+        └─xrdp-sesman
+
+EXERCISE 3
+ps -o pid,user,pri,nice,vsz,rss,s,pcpu,pmem,time,args
+   SHR
+
+
+EXERCISE 4
+Niceness:
+We used the binaries "floats".
+
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+11162 laia.ol+  20   0    2388    672    576 R 100.0 0.004   0:05.86 floats
+11163 laia.ol+  24   4    2388    672    576 R 83.00 0.004   0:02.49 floats
+
+Indeed, we see that the process with a higher priority usess more CPU than the one with a lower priority (with higher niceness)
+
+EXERCISE 5
+ PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+11162 laia.ol+  20   0    2388    672    576 R 100.0 0.004   0:05.86 floats
+11163 laia.ol+  24   4    2388    672    576 R 83.00 0.004   0:02.49 floats
+
+We observe no difference on the impact on CPU usage from using the #nice command.
+
+EXERCISE 6
+Active:
+   voluntary_ctxt_switches:	1
+   nonvoluntary_ctxt_switches:	200
+Passive:
+   voluntary_ctxt_switches:	164
+   nonvoluntary_ctxt_switches:	0
+
+Active executes the infinite loop nonstop, so there will be a lot of nonvoluntary context switches since it will have used it's "allowed" time for running and will be stopped by the OS.
+On the other hand, passive stops the execution because of the 'sleep' command, so since it's waiting for the time to pass and can't execute the following instruction until then, a voluntary change of context will happen every iteration.
+
+
+EXERCISE 7
+- A single instance: 0:00.00elapsed 66%CPU
+

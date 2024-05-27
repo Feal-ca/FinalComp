@@ -1,0 +1,9 @@
+
+
+
+
+Matrices: ( 1224 1224 ) x ( 1224 1224 )
+Multiplication time: 6.372468 s
+Operations:          3667534848.000000
+MFlops:              575.528171
+Initialized matrixes of 1224 X 1224 (8 Bytes each element) accessing row-wise

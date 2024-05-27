@@ -1,0 +1,25 @@
+EXERCISE 1
+a) write the command line you need to execute to redirect the output to a file called “out.dat” instead of the screen. Try to firstly write this single value “10” as input parameter.
+    Using '10' as the input parameter:
+            COM-LABS/S6> ./writeint 10 > out.dat
+
+
+
+b) explain your findings about the output obtained from executing the command line “#>xxd out.dat”, in terms of endianness (check theory slides) and number of bytes the file comprises. The command “xxd” was used in other previous sessions (check its man page).
+    output: 0a00 0000
+    It's little endian because the least significant byte comes first, on the left.
+    The file comprises a total of 4 bytes.
+
+
+c) write the command line to append more values to the “out.dat” file executing new invocations to “./writeint”. That is, the data included in previous command line executions are preserved in the file. You can do it using the values that you wish and using multiple input parameters in a single invocation
+    ./writeint 28 >> out.dat
+    xxd out.dat
+        output: 0a00 0000
+                1c00 0000
+
+EXERCISE 3
+The command is: #./readchar 10 > out.dat
+
+
+
+

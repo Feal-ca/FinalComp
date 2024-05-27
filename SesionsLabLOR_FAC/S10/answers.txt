@@ -1,0 +1,75 @@
+EXERCISE 1
+Note: the file /proc/devices is unaccessible directly since the permission is denied. Instead, to show its content we use the command #cat /proc/devices
+The numbers are the major numbers (like what type o device is)
+
+First we go to the /dev directory. If we use #ls -l we indeed see that some files have c- and others b-, refering to whether they use character or block.
+If we now open a new terminal and use the command #ps, we will see
+      PID TTY          TIME CMD
+    5067 pts/2    00:00:00 tcsh
+    5083 pts/2    00:00:00 ps
+what means TTY (the terminal) is pts/2
+Now that we know which terminal is executing the command, from the /dev directory we use #cd pts and change t this directory. If we use the command #ls -l we see
+    crw--w---- 1 laia.oleart tty  136, 1 May  7 10:24 1
+    crw--w---- 1 laia.oleart tty  136, 2 May  7 10:24 2
+    c--------- 1 root        root   5, 2 May  7 10:09 ptmx
+and we observe that, indeed, two terminals are opened.
+If we now open a third terminal and use once again the command #ls -l in the pts directory, we will see
+    crw--w---- 1 laia.oleart tty  136, 1 May  7 10:24 1
+    crw--w---- 1 laia.oleart tty  136, 2 May  7 10:24 2
+    crw--w---- 1 laia.oleart tty  136, 3 May  7 10:24 3
+    c--------- 1 root        root   5, 2 May  7 10:09 ptmx
+and that we now have one more terminal.
+
+
+EXERCISE 2
+The program is started without any needed argument. Then, it reads a char every time and prints it, and then repeats the loop. Since the loop only stops when the character given is zero or less. Because of this, it will have to be stopped manually (no char is negative and only the null is zero).
+
+
+
+EXERCISE 3
+We are executing the program in the terminal 3, /dev/pts/3 and want to show the output of the program in the terminal 1, /dev/pts/1. We wil use the command #./iochars > /dev/pts/1
+Now we find the PID of the program and use the command #cd proc/PID/fd to go to the directory with the folder list.
+If we use the command #ls -l the output is:
+    total 0
+    lrwx------ 1 laia.oleart alumnes 64 May  7 10:51 0 -> /dev/pts/3
+    l-wx------ 1 laia.oleart alumnes 64 May  7 10:51 1 -> /dev/pts/1
+    lrwx------ 1 laia.oleart alumnes 64 May  7 10:51 2 -> /dev/pts/3
+
+EXERCISE 4
+In order to change the code to perform exactly the same but using a buffer of 100 chars, the following must be done:
+-When declaring c as a char we will now indicate c[100] instead. Now it's not a char but an array/vector/list of 100 chars.
+-Now in the function read(), there's no need to pass the address of c as a parameter but the array instead.
+
+
+EXERCISE 5
+The command used is
+    #strace -o output.dat -e read,write ./iochars < exempleText.txt > sortida.dat
+The program iochars reads the input from exempleText.txt and redirects the output to sortida.dat (where it writes the same text as in exempleText since that's what the program iochars does). In output.dat there's written the commands and parameters of the read and write functions.
+
+The command to do the same procedure with iochars-v2 is
+    #strace -o output.dat -e read,write ./iochars-v2 < exempleText.txt > sortida.dat
+The same as with iochars happens but now instead of reading and writing every char one by one, they are read and written 100 by 100 (the size of the buffer chosen). This will only show in output.dat, where we've traces the execution of the program, while sortida.dat will be the same as in the previous section.
+
+EXERCISE 6
+If we look at the code, we see the first paramter of the function write is not a 1 like in iochars but a 3. This is because instead ofwriting to the standar file decriptor it write to the third one. To redirect the ouput, we will need to put a 3 before the '>' to indicate we are redirecting this output. Therefore, the command is the following:
+    #./ioints 112 3> output.dat
+(112 is the input parameter, but it could be any number)
+
+The output is: �123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmno
+
+EXERCISE 7
+To open a file use the function fopen("name_of_the_file_to_open", "modes/permissios")
+To read and write files we use the function fread(), fwrite(). To see the whole code implementation, see copyFile1.c
+Now that we have the code, to execute it and redirect the output to CopiedOutput.dat we use the command:
+    #./copyFile1 > CopiedOutput.dat
+
+EXERCISE 8
+The change made to the code so it reads and writes N numbers is first declaring an int N and assigning it a value. Then, when int num is declare, we declare it as int num[N], so it wll be an array of N ints.
+
+EXERCISE 9
+With copyFile1 we obtain:
+    0.03user 0.00system 0:00.08elapsed 43%CPU
+With copyFileN we obtain:
+    0.00user 0.00system 0:00.05elapsed 14%CPU
+
+As we can see, copyFileN needs less time. Since it reads and writes the numbers by 1M and 1M (so in this case, the whole file since there are 1M) less system calls are needed (each time there's a read/write) so it will go faster. However, it is true not much difference is shown since both are small times.

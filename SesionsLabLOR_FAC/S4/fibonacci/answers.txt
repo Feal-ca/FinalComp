@@ -1,0 +1,235 @@
+EXERCISE 3:
+Next to the symbol there's the name of the functions such as 'main' or 'fibonacci'.
+
+The one obtained from the executable is shorter but both have the same structure.
+Between the fibonacci.o and fibonacci-orig.o main difference is in the fibonacci function line. In fibonacci.o it only says 'U fibonacci' while in fibonacci-orig.o it says '0000000000000000 T fibonacci'. This difference comes from the fact that the function fibonacci in fibonacci-orig.o is inside the file while in fibonacci.o it's in a linked library.
+The symbol "b" is in the BSS data section which usully contains zero-initialized or uninitialized data.
+the symbol U mean that the symbol is undefined.
+"t", the symbol is in the text section
+"r", the symbol is in the read only data section
+"U" means undefined.
+
+
+nm fibonacci
+
+0000000000402048 B __bss_start
+0000000000402068 b completed.6999
+0000000000402028 D __data_start
+0000000000402028 W data_start
+00000000004005f0 t deregister_tm_clones
+0000000000400660 t __do_global_dtors_aux
+0000000000401de0 d __do_global_dtors_aux_fini_array_entry
+0000000000402030 D __dso_handle
+0000000000401de8 d _DYNAMIC
+0000000000402048 D _edata
+0000000000402078 B _end
+                 U exit@GLIBC_2.2.5
+                 U fibonacci
+00000000004007c4 T _fini
+                 U fprintf@GLIBC_2.2.5
+0000000000400690 t frame_dummy
+0000000000401dd8 d __frame_dummy_init_array_entry
+0000000000400954 r __FRAME_END__
+0000000000401fe8 d _GLOBAL_OFFSET_TABLE_
+                 w __gmon_start__
+0000000000400848 r __GNU_EH_FRAME_HDR
+0000000000400530 T _init
+0000000000401de0 d __init_array_end
+0000000000401dd8 d __init_array_start
+00000000004007d0 R _IO_stdin_used
+00000000004007be T __libc_csu_fini
+000000000040073e T __libc_csu_init
+                 U __libc_start_main@GLIBC_2.2.5
+0000000000400697 T main
+                 U printf@GLIBC_2.2.5
+0000000000400620 t register_tm_clones
+0000000000402070 B result
+00000000004005be T _start
+0000000000402060 B stderr@GLIBC_2.2.5
+                 U strtol@GLIBC_2.2.5
+0000000000402038 D __TMC_END__
+
+
+
+nm fibonacci.o
+
+
+                 U exit
+                 U fibonacci
+                 U fprintf
+0000000000000000 T main
+                 U printf
+0000000000000008 C result
+                 U stderr
+                 U strtol
+
+
+nm fibonacci-orig.o
+
+
+                 U exit
+0000000000000000 T fibonacci
+                 U fprintf
+000000000000004e T main
+                 U printf
+0000000000000008 C result
+                 U stderr
+                 U strtol
+
+
+EXERCISE 4:
+Static library are included in the compiled executable and non-static libraries (or dynamic) are not, they are compiled and used when needed by the program during runtime. Because of this, static libraries make the file much longer but it provides independence from other files.
+
+30001 11936 Mar  6 11:46 fib-static
+30001 11912 Mar  5 11:36 fib-dynamic
+
+In the static the symbol for the fibonacci function is 'T' since it's included in the file, while in the dynamic one the symbol is 'U' since it's undefined in that file.
+
+
+fib-static
+0000000000402040 B __bss_start
+0000000000402048 b completed.6999
+0000000000402020 D __data_start
+0000000000402020 W data_start
+0000000000400590 t deregister_tm_clones
+0000000000400600 t __do_global_dtors_aux
+0000000000401df0 d __do_global_dtors_aux_fini_array_entry
+0000000000402028 D __dso_handle
+0000000000401df8 d _DYNAMIC
+0000000000402040 D _edata
+0000000000402058 B _end
+                 U exit@GLIBC_2.2.5
+00000000004006ce T fibonacci
+00000000004007b4 T _fini
+                 U fprintf@GLIBC_2.2.5
+0000000000400630 t frame_dummy
+0000000000401de8 d __frame_dummy_init_array_entry
+0000000000400974 r __FRAME_END__
+0000000000401fe8 d _GLOBAL_OFFSET_TABLE_
+                 w __gmon_start__
+0000000000400838 r __GNU_EH_FRAME_HDR
+00000000004004e8 T _init
+0000000000401df0 d __init_array_end
+0000000000401de8 d __init_array_start
+00000000004007c0 R _IO_stdin_used
+00000000004007ae T __libc_csu_fini
+000000000040072e T __libc_csu_init
+                 U __libc_start_main@GLIBC_2.2.5
+0000000000400637 T main
+                 U printf@GLIBC_2.2.5
+00000000004005c0 t register_tm_clones
+0000000000402050 B result
+000000000040055e T _start
+0000000000402040 B stderr@GLIBC_2.2.5
+                 U strtol@GLIBC_2.2.5
+0000000000402030 D __TMC_END__
+
+
+EXERCISE 5:
+Here we can see the difference in size is very small:
+30001 16504 Mar  6 11:56 matmul-0
+30001 16464 Mar  6 11:56 matmul-1
+30001 16512 Mar  6 11:56 matmul-2
+30001 16512 Mar  6 11:56 matmul-3
+
+As can be shown below, the execution time in the first executables (unoptimized) is much higher than the others. After this first optimization the execution time with further optimizations also goes down but not as significantly.
+The -O1 that we used for this first optimization was just basic optimizations that don't take compilation time. Further optimizations included code alignment, store merging, switch conversion among others, and the last optimization added optimizations such as loop vectorize, loop distribution...
+
+    ./matmul-0:
+init(A): 0.019000 s
+init(A): 0.014082 s
+init(A): 0.014062 s
+init(A): 0.014087 s
+
+init(B): 0.014908 s
+init(B): 0.014148 s
+init(B): 0.014083 s
+init(B): 0.014068 s
+
+init(C): 0.014919 s
+init(C): 0.014072 s
+init(C): 0.014079 s
+init(C): 0.014065 s
+
+C += AxB: 6.108007 s
+
+Matrices: ( 1224 1224 ) x ( 1224 1224 )
+Multiplication time: 6.108007 s
+Operations:          3667534848.000000
+MFlops:              600.447041
+Initialized matrixes of 1224 X 1224 (8 Bytes each element) accessing row-wise
+
+
+    ./matmul-1:
+init(A): 0.005839 s
+init(A): 0.001115 s
+init(A): 0.001089 s
+init(A): 0.001065 s
+
+init(B): 0.002127 s
+init(B): 0.001115 s
+init(B): 0.001050 s
+init(B): 0.001038 s
+
+init(C): 0.001923 s
+init(C): 0.001064 s
+init(C): 0.001038 s
+init(C): 0.001033 s
+
+C += AxB: 1.903168 s
+
+Matrices: ( 1224 1224 ) x ( 1224 1224 )
+Multiplication time: 1.903168 s
+Operations:          3667534848.000000
+MFlops:              1927.068403
+Initialized matrixes of 1224 X 1224 (8 Bytes each element) accessing row-wise
+
+    ./matmul-2:
+init(A): 0.005452 s
+init(A): 0.001078 s
+init(A): 0.000934 s
+init(A): 0.000915 s
+
+init(B): 0.001721 s
+init(B): 0.000955 s
+init(B): 0.000927 s
+init(B): 0.000908 s
+
+init(C): 0.001763 s
+init(C): 0.001018 s
+init(C): 0.000909 s
+init(C): 0.000894 s
+
+C += AxB: 1.900252 s
+
+Matrices: ( 1224 1224 ) x ( 1224 1224 )
+Multiplication time: 1.900252 s
+Operations:          3667534848.000000
+MFlops:              1930.025411
+Initialized matrixes of 1224 X 1224 (8 Bytes each element) accessing row-wise
+
+
+    ./matmul-3:
+init(A): 0.004804 s
+init(A): 0.000768 s
+init(A): 0.000677 s
+init(A): 0.000582 s
+
+init(B): 0.001338 s
+init(B): 0.000660 s
+init(B): 0.000569 s
+init(B): 0.000557 s
+
+init(C): 0.001433 s
+init(C): 0.000600 s
+init(C): 0.000557 s
+init(C): 0.000469 s
+
+C += AxB: 1.898827 s
+
+Matrices: ( 1224 1224 ) x ( 1224 1224 )
+Multiplication time: 1.898827 s
+Operations:          3667534848.000000
+MFlops:              1931.474095
+Initialized matrixes of 1224 X 1224 (8 Bytes each element) accessing row-wise
+

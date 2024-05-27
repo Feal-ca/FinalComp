@@ -1,0 +1,81 @@
+EXERCISE 1
+    &ptr: l'adreça del pointer(on es guarda el pointer)
+    *ptr: valor del què apunta el pointer(l'int)
+    ptr és l'adreça que guarda el pointer (l'adreça de l'int)
+
+El programa t'escriu les adreces de memòria i els valors d'un enter al llarg del programa, que va fent crides recursives.
+
+EXERCISE 2
+0x7ffcff970a58
+0x7ffcff970928
+0x7ffcff9707f8
+0x7ffcff9706c8
+0x7ffcff970598
+...
+
+While it goes down the recursion level, it assignes for the int localVar from each recursion level different address, because they are different variables. However, as it goes up back again the recursion level, the address of the variable localVar of each level is the same as it was while going down, since it is the same variable and stil has the same address.
+
+
+EXERCISE 3
+The program shows the size of heap memory at the beginning, before assigning to it a variable. Once it's assigned, it shows the size once again. Then, it frees the variable and heap memory and shows its size once again.
+
+When assgning two vectors of "similar" size (understading similar as  +-10³), the size of heap memory is the same. This is because since the system call makes the program go slower, malloc optimizes it by assigning more hep memory than strictly necessary because since it's been needed once, it's expected to be needed more. For this same reason, the heap memory size isn't reduced onc the variable is freed, because it will probably be needed again and eliminating it to assigning it again would be costy.
+However, when a far bigger vector is assiged more heap memory is needed because otherwise the adressess wouldn't be saved, so more memory is assigned.
+
+EXERCISE 4
+(We will only copy the first lines when showing the memory of the process to make the analysis easier)
+    first step
+00400000-00401000 r-xp 00000000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+00401000-00402000 r--p 00001000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+00402000-00403000 rw-p 00002000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+
+    second step
+00400000-00401000 r-xp 00000000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+00401000-00402000 r--p 0000137 37985182                                  /dades/laia.oleart/COM-LABS/S9/mem-heap
+00402000-00403000 rw-p 00002000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+0100e000-02eb3000 rw-p 00000000 00:00 0                                  [heap]
+
+    third step
+00400000-00401000 r-xp 00000000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+00401000-00402000 r--p 00001000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+00402000-00403000 rw-p 00002000 00:37 37985182                           /dades/laia.oleart/COM-LABS/S9/mem-heap
+0100e000-0102f000 rw-p 00000000 00:00 0                                  [heap]
+
+The size of each memory region doesn't change, it can be calculating substracting the ennding address to the starting one. The size of the heap is the same that the program mem-heap-orig shows us.
+In the first step there is no heap since it hasn't been created but then it is, as the program shows us.
+The first line would show the code zone, so it has read and execution rights.
+The second line would be read only data so it has reading rights.
+The third line would be the read-and-write data so it has reading and writing rights.
+The fourth line is the heap so it has reading ad writing rights.
+
+EXERCISE 5
+During the executing the size of the stack doesn't change. This is because its size is already large enough for all the addresses so no more memory is needed nor assigned.
+
+If the buff char
+Every time you make a recursive call you store a char array of size n in the stack. We found that if the n is big enough (approching the initial size of the stack, aprox 130000) then more memory will be needed and the stack size will increase.
+
+EXERCISE 6
+The heap size with a very large input parameter is much higher than with a smaller one because of the reasons stated previously.
+When the input parameter is low, the heap memory doesn't change since the memory allocated by malloc is sufficient. With a far larger parameter, however, the heap size does change since each array needs more memory, more than malloc allocates it.
+
+
+EXERCISE 7
+A similar thing happens as in the previous exercise with the difference than for very large input parameters the heap size remains constant as well. This is because malloc memory is freed at every iteration so no more memory needs to be assigned.
+
+
+EXERCISE 8
+The command needed to compile the program with static libraries is:
+    gcc -o mem-heap-orig -static mem-heap-orig.c
+Now if we run it we observe that both data and code sections are larger, since they need to include the static libraries.
+
+EXERCISE 9
+
+With numpy:
+    01d5a000-01f5c000 rw-p 00000000 00:00 0                                  [heap]
+    01d5a000-02309000 rw-p 00000000 00:00 0                                  [heap]
+    01d5a000-02309000 rw-p 00000000 00:00 0                                  [heap]
+
+    The virtual memory increases by 20% and what increases significantly is RES.
+
+
+
